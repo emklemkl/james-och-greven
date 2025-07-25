@@ -57,7 +57,7 @@ Make sure you're on the `main` branch:
 
 If you're not on main, switch to it:
    ```
-   git switch master
+   git switch main
    ```
 
 ## 2. Create a new branch
