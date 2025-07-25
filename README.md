@@ -83,14 +83,13 @@ Then commit changes by running:
    ```
 
 To push your commited changes to a branch with the same name as your local branch, run:
-*-u is to set the upstream (the remote github branch that links towards your local branch) to match github.com/emklemkl/james-och-greven (which equals origin) and the branch name my-new-branch-with-descriptive-name*
    ```
    git push -u origin my-new-branch-with-descriptive-name
    ```
    - origin is the default name Git gives to the remote repository where your code is stored online (usually on GitHub, GitLab, Bitbucket, etc.).
       - It acts as a shortcut or nickname for the remote URL, like https://github.com/emklemkl/james-och-greven.git.
       - So when you run commands like git push origin main, you're telling Git: “send my changes to the main branch at the origin remote.”
-   - The -u flag sets the upstream tracking reference, which links your local branch to the remote branch on GitHub. Once set, future git push or git pull commands will automatically target this branch without extra arguments, ie you can write git pull and git push without extras.
+   - The -u flag sets the upstream tracking reference, which links your local branch to the remote branch on GitHub. Once set, future git push or git pull commands will automatically target this branch without extra arguments, i.e. you can write `git pull` and `git push` without extras.
 
 After pushing your commits o the remote branch you can enter the github project page and start a pull request, make sure the branch you just pushed to is merged into main inside the pull request (PR).
 
