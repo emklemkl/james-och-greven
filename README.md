@@ -1,5 +1,11 @@
 # james-och-greven
 
+# Download Godot
+Follow this link:
+   ```
+   https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_win64.exe.zip
+   ```
+
 # 🛠️ Git Setup
 
 This guide will help you get started with Git and our team workflow.
