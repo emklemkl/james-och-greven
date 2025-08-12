@@ -101,3 +101,5 @@ After pushing your commits o the remote branch you can enter the github project 
 
 eggy
 Smacken
+simon
+
