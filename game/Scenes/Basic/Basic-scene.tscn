@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://s4ojw1m8oa7u"]
 
-[ext_resource type="Script" uid="uid://bbacd1hl5d14f" path="res://basic-scene.gd" id="1_eqjqa"]
-[ext_resource type="PackedScene" uid="uid://dhwq0bipgcl5b" path="res://Basic-player.tscn" id="2_mq6ha"]
+[ext_resource type="Script" path="res://Scripts/basic-scene.gd" id="1_5vhgl"]
+[ext_resource type="PackedScene" uid="uid://dhwq0bipgcl5b" path="res://Scenes/Basic/Basic-player.tscn" id="2_mq6ha"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqjqa"]
 albedo_color = Color(0.535794, 0.711205, 0.739631, 1)
@@ -14,7 +14,7 @@ size = Vector2(20, 20)
 points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
 
 [node name="Basic-scene" type="Node3D"]
-script = ExtResource("1_eqjqa")
+script = ExtResource("1_5vhgl")
 
 [node name="Basic-player" parent="." instance=ExtResource("2_mq6ha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73769, 0)
