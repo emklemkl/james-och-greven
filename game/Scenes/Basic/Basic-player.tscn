@@ -1,8 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhwq0bipgcl5b"]
 
-[ext_resource type="Script" path="res://Scripts/basic-player.gd" id="1_r0yti"]
+[ext_resource type="Script" uid="uid://c4g780n420tsy" path="res://Scripts/basic-player.gd" id="1_r0yti"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w6l4n"]
+radius = 0.25
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_r0yti")
