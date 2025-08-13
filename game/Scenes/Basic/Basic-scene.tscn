@@ -1,8 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://s4ojw1m8oa7u"]
+[gd_scene load_steps=12 format=3 uid="uid://s4ojw1m8oa7u"]
 
 [ext_resource type="Script" uid="uid://bbacd1hl5d14f" path="res://Scripts/basic-scene.gd" id="1_5vhgl"]
 [ext_resource type="PackedScene" uid="uid://dhwq0bipgcl5b" path="res://Scenes/Basic/Basic-player.tscn" id="2_mq6ha"]
 [ext_resource type="Script" uid="uid://dq63y1gr1x4hr" path="res://Scripts/ground.gd" id="3_apboy"]
+[ext_resource type="PackedScene" uid="uid://by61iueox7djv" path="res://Scenes/Basic/Basic-door.tscn" id="4_d4h5d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_d4h5d"]
+size = Vector3(10, 2, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d4h5d"]
+points = PackedVector3Array(5, 1, 0.5, 5, 1, -0.5, -5, 1, 0.5, 5, -1, 0.5, 5, -1, -0.5, -5, 1, -0.5, -5, -1, 0.5, -5, -1, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f7o17"]
+size = Vector3(9, 2, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f7o17"]
+points = PackedVector3Array(4.5, 1, 0.5, 4.5, 1, -0.5, -4.5, 1, 0.5, 4.5, -1, 0.5, 4.5, -1, -0.5, -4.5, 1, -0.5, -4.5, -1, 0.5, -4.5, -1, -0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqjqa"]
 albedo_color = Color(0.535794, 0.711205, 0.739631, 1)
@@ -18,7 +31,30 @@ points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
 script = ExtResource("1_5vhgl")
 
 [node name="Basic-player" parent="." instance=ExtResource("2_mq6ha")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73769, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33107, -5.50212)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Basic-player"]
+omni_range = 15.0
+
+[node name="Wall" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9959, 0.98125, 0)
+mesh = SubResource("BoxMesh_d4h5d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9959, 0.98125, 0)
+shape = SubResource("ConvexPolygonShape3D_d4h5d")
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.484, 0.981, 0)
+mesh = SubResource("BoxMesh_f7o17")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.484, 0.981, 0)
+shape = SubResource("ConvexPolygonShape3D_f7o17")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 script = ExtResource("3_apboy")
@@ -29,6 +65,11 @@ mesh = SubResource("PlaneMesh_4xowi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConvexPolygonShape3D_4xowi")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.82435, 0)
-omni_range = 14.905
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.636745, -0.50811, -0.579983, 0.673387, -3.23154e-08, 0.73929, -0.375641, -0.861292, 0.342154, -10.9055, 8.98553, 10.7846)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.643687, 0.491846, -0.586306, 0.673387, -9.86612e-09, 0.73929, 0.363617, -0.870682, -0.331203, -10.9055, 8.98553, -10.4592)
+
+[node name="RigidBody3D" parent="." instance=ExtResource("4_d4h5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00409698, 0.0215235, -0.0274494)

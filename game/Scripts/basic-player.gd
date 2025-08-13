@@ -11,14 +11,18 @@ var interaction_ray_cast_to = Vector3(0, 0, 0)
 var speedModifier = 1
 
 func _input(event):
+	# Camera rotation for mouse movement
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
-		# Update the interaction raycast every time the mouse moves
-		interaction_ray_cast_from = $Camera3D.project_ray_origin(event.position)
-		interaction_ray_cast_to = interaction_ray_cast_from + $Camera3D.project_ray_normal(event.position) * RAY_LENGTH
-	
+
+	# Update interaction raycast for any input
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		var mouse_pos = get_viewport().get_mouse_position()
+		interaction_ray_cast_from = $Camera3D.project_ray_origin(mouse_pos)
+		interaction_ray_cast_to = interaction_ray_cast_from + $Camera3D.project_ray_normal(mouse_pos) * RAY_LENGTH
+
 func _physics_process(delta: float) -> void:
 	# Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
