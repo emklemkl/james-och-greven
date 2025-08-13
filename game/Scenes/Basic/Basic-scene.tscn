@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://s4ojw1m8oa7u"]
+[gd_scene load_steps=7 format=3 uid="uid://s4ojw1m8oa7u"]
 
-[ext_resource type="Script" path="res://Scripts/basic-scene.gd" id="1_5vhgl"]
+[ext_resource type="Script" uid="uid://bbacd1hl5d14f" path="res://Scripts/basic-scene.gd" id="1_5vhgl"]
 [ext_resource type="PackedScene" uid="uid://dhwq0bipgcl5b" path="res://Scenes/Basic/Basic-player.tscn" id="2_mq6ha"]
+[ext_resource type="Script" uid="uid://dq63y1gr1x4hr" path="res://Scripts/ground.gd" id="3_apboy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqjqa"]
 albedo_color = Color(0.535794, 0.711205, 0.739631, 1)
@@ -20,6 +21,7 @@ script = ExtResource("1_5vhgl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73769, 0)
 
 [node name="Ground" type="StaticBody3D" parent="."]
+script = ExtResource("3_apboy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("PlaneMesh_4xowi")
